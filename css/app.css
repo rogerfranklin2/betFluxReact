@@ -7,9 +7,10 @@
   bottom: 0;
 }
 
+/*
 .slider {
 	overflow-y: hidden;
-	max-height: 500px; /* approximate max height */
+	max-height: 500px; 
 
 	transition-property: all;
 	transition-duration: 4.5s;
@@ -18,4 +19,4 @@
 
 .slider.closed {
 	max-height: 0;
-}
+}*/

@@ -1,5 +1,6 @@
 var React = require('react');
 var BettingActions = require('../actions/BettingActions');
+var BettingLine = require('./BettingLine.react');
 
 var BettingSlip = React.createClass({
   
@@ -12,22 +13,12 @@ var BettingSlip = React.createClass({
     <div className="betting-slip slider">
       BettingSLIP!      
 
-      <form className="pure-form">
       {this.props.activeBets.map(function(game, index){
-        var removeFixture = this.addToFixtures.bind(this, game);
           return (
-            <div key={index} value={index}>
-              <p>{game.name} ({game.odds})
-                <button onClick={removeFixture} className="pure-button pure-button-primary">+</button>
-                <input />
-                Expected returns: 0.00
-              </p>
-
-            </div>
+            <BettingLine game={game} key={index}></BettingLine>
           );
-        }, this)}
+        })}
       <button>Confirm bets</button>
-      </form>
     </div>
     );
   }
