@@ -12,13 +12,12 @@ var BettingLine = React.createClass({
   },
   
   handleChange: function(event){
-    console.log("HANDLING CHANGE");
-    this.setState({value: event.target.value*2});
+    this.setState({value: event.target.value});
   },
   
   render: function(){
     return (
-      <div key={this.props.key}>
+      <div>
         <p>{this.props.game.name} ({this.props.game.odds})
           <button onClick={this.addToFixtures}  className="pure-button pure-button-primary">+</button>
           <input onChange={this.handleChange}/>
