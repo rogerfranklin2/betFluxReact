@@ -1,0 +1,29 @@
+{
+  "name": "reactBill",
+  "version": "0.0.1",
+  "description": "Sky Bill with react",
+  "main": "js/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Roger Franklin",
+  "license": "ISC",
+  "dependencies": {
+    "flux": "^2.0.0",
+    "react": "^0.12.2",
+    "browserify": "~6.2.0",
+    "underscore": "^1.7.0",
+    "reactify": "^0.15",
+    "watchify": "~2.1.0"
+  },
+  
+  "scripts": {
+    "start": "watchify -o js/bundle.js -v -d .",
+    "build": "browserify . | uglifyjs -cm > js/bundle.min.js"
+  },
+  "browserify": {
+    "transform": [
+      "reactify"
+    ]
+  }
+}
