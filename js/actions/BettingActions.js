@@ -19,6 +19,13 @@ var BettingActions = {
       actionType: "ADD_TO_FIXTURES",
       data: data
     });
+  },
+  addToTotal: function(data){
+    console.log("adding to total");
+    AppDispatcher.handleAction({
+      actionType: "CALCULATE_TOTAL",
+      data: data
+    });
   }
 }
 

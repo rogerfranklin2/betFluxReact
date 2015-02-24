@@ -4,19 +4,27 @@ var _ = require('underscore');
 
 
 var _currentBets = [];
+var _total = 0;
 
 var BetsStore = _.extend({}, EventEmitter.prototype, {
     getBets: function(){
       return _currentBets;
     },
   
+    getTotal: function(){
+      return _total;
+    },
+  
     addFixture: function(data){
-      
       _currentBets.push(data);
     },
   
     removeFixture: function(data){
       _currentBets = _.without(_currentBets, data);
+    },
+  
+    addToTotal: function(data){
+      _total += parseInt(data); 
     },
   
     // Emit Change event
@@ -46,6 +54,10 @@ AppDispatcher.register(function(payload) {
         
         case "ADD_TO_FIXTURES":
             BetsStore.removeFixture(action.data);
+            break;
+        
+        case "CALCULATE_TOTAL":
+            BetsStore.addToTotal(action.data);
             break;
         
 

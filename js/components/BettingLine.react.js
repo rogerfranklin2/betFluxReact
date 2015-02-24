@@ -12,7 +12,10 @@ var BettingLine = React.createClass({
   },
   
   handleChange: function(event){
+    
     this.setState({value: event.target.value});
+    console.log("handling change")
+    BettingActions.addToTotal(event.target.value);
   },
   
   render: function(){
