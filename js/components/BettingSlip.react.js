@@ -6,11 +6,12 @@ var BetsStore = require('../stores/BetsStore');
 var BettingSlip = React.createClass({
   
   getInitialState: function() {
-    return {value: BetsStore.getTotal()};
+    return {value: BetsStore.getTotal(),
+            expanded: false};
   },
   
   _onChange: function() {
-    this.setState({value: BetsStore.getTotal()});
+    this.setState({value: BetsStore.getTotal(), expanded: true});
   },
   
   componentDidMount: function(){
@@ -25,10 +26,17 @@ var BettingSlip = React.createClass({
     BettingActions.addToFixtures(data);
   },
   
+  toggleSlip: function(){
+    console.log("Toggling")
+    this.setState({expanded: !this.state.expanded});
+  },
+  
   render: function(){
     return (
-    <div className="betting-slip slider">
-      BettingSLIP!      
+    <div className="betting-slip">
+      <a onClick={this.toggleSlip}>Bet Slip Click to expand >> </a>
+        
+      <div className={this.state.expanded ? 'expanded' : 'hidden'}>
 
       {this.props.activeBets.map(function(game, index){
           return (
@@ -36,6 +44,7 @@ var BettingSlip = React.createClass({
           );
         })}
       <button>Confirm bets</button><p>Total: {this.state.value}</p>
+      </div>
     </div>
     );
   }

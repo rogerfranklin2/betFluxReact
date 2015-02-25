@@ -16,14 +16,13 @@ var Fixtures = React.createClass({
   
   render: function(){
     return (
-    <div>
-      <table>
+    <div className="card-panel col s12">
+      <h3>Upcoming fixtures</h3>
+      <table className="bordered hoverable centered">
       <thead>
         <tr>
           <th>Team 1</th>
-          <th></th>
           <th>vs</th>
-          <th></th>
           <th>Team 2</th>
 
         </tr>
@@ -37,11 +36,9 @@ var Fixtures = React.createClass({
       
               return (
                 <tr key={index} value={index} className={this.state.selected.indexOf(game) != -1 ? 'disabled' : ''}>
-                  <td>{game.teams[0].name}</td>
-                  <td><button onClick={boundClick}>Win({game.teams[0].odds})</button></td>
+                  <td><a onClick={boundClick}>{game.teams[0].name} <span className="">Win({game.teams[0].odds})</span></a></td>
                   <td>vs</td>
-                  <td><button onClick={boundClick2}>Win({game.teams[1].odds})</button></td>
-                  <td>{game.teams[1].name}</td>
+                  <td><a onClick={boundClick2}>{game.teams[1].name} <span className="">Win({game.teams[0].odds})</span></a></td>
 
                 </tr>
               );

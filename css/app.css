@@ -3,20 +3,22 @@
 }
 
 .betting-slip {
-  position: absolute;
+  background-color: #7cb342;
+  position: fixed;
   bottom: 0;
+  right: 70px;
+  padding: 8px;
 }
 
-/*
-.slider {
-	overflow-y: hidden;
-	max-height: 500px; 
-
-	transition-property: all;
-	transition-duration: 4.5s;
-	transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+.betting-slip a {
+  color: white;
 }
 
-.slider.closed {
-	max-height: 0;
-}*/
+.hidden{
+  display:none;
+}
+
+.expanded{
+  display:block;
+}
+

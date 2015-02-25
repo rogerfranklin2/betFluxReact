@@ -14,7 +14,6 @@ var BettingLine = React.createClass({
   handleChange: function(event){
     
     this.setState({value: event.target.value});
-    console.log("handling change")
     BettingActions.addToTotal(event.target.value);
   },
   
@@ -23,7 +22,6 @@ var BettingLine = React.createClass({
       <div>
         <p>{this.props.game.name} ({this.props.game.odds})
           <button onClick={this.addToFixtures}  className="pure-button pure-button-primary">+</button>
-          <input onChange={this.handleChange}/>
           Expected returns: {this.state.value}
         </p>
       </div>

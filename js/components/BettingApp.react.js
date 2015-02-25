@@ -29,7 +29,9 @@ var BettingApp = React.createClass({
   
   render: function(){
     return (
-    <div className="betting">
+    
+    <div className="betting row">
+      <h1>coinBet</h1>
       <Fixtures fixtures={this.state.games}></Fixtures>
       <BettingSlip activeBets={this.state.activeBets}></BettingSlip>
     </div>
