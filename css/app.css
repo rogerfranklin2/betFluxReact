@@ -8,9 +8,10 @@
   bottom: 0;
   right: 70px;
   padding: 8px;
+
 }
 
-.betting-slip a {
+.betting-slip a, .betting-slip p {
   color: white;
 }
 

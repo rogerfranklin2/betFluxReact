@@ -14,7 +14,9 @@
     "browserify": "~6.2.0",
     "underscore": "^1.7.0",
     "reactify": "^0.15",
-    "watchify": "~2.1.0"
+    "watchify": "~2.1.0",
+    "connect": "*",
+    "serve-static": "*"
   },
   
   "scripts": {
