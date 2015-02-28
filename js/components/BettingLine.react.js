@@ -14,14 +14,12 @@ var BettingLine = React.createClass({
   handleChange: function(event){
 
     if (this.isANumber(event.target.value)) {
-      BettingActions.addToTotal(-this.state.value)
       this.setState({value: event.target.value});
-      BettingActions.addToTotal(event.target.value);
+      BettingActions.addToTotal({name: this.props.game.name, value: event.target.value});
     }
     else{
-      BettingActions.addToTotal(-this.state.value)
       this.setState({value: 0});
-      BettingActions.addToTotal(0);
+      BettingActions.addToTotal({name: this.props.game.name, value: 0});
     }
     this.calculateEsitmated(event.target.value);
   },

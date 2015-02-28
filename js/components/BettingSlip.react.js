@@ -22,12 +22,13 @@ var BettingSlip = React.createClass({
     BetsStore.removeChangeListener(this._onChange);
   },
   
-  addToFixtures: function(data){
-    BettingActions.addToFixtures(data);
-  },
-  
   toggleSlip: function(){
     this.setState({expanded: !this.state.expanded});
+  },
+  
+  confirmBets: function(){
+    console.log(React.Children.count());
+//    BettingActions.confirmBets(data);
   },
   
   render: function(){
@@ -42,7 +43,7 @@ var BettingSlip = React.createClass({
             <BettingLine game={game} key={index}></BettingLine>
           );
         })}
-      <button>Confirm bets</button><p>Total: {this.state.value}</p>
+      <button onClick={this.confirmBets}>Confirm bets</button><p>Total: {this.state.value}</p>
       </div>
     </div>
     );

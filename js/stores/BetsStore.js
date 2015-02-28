@@ -4,7 +4,6 @@ var _ = require('underscore');
 
 
 var _currentBets = [];
-var _total = 0;
 
 var BetsStore = _.extend({}, EventEmitter.prototype, {
     getBets: function(){
@@ -12,7 +11,7 @@ var BetsStore = _.extend({}, EventEmitter.prototype, {
     },
   
     getTotal: function(){
-      return _total;
+      return _.reduce(_.pluck(_currentBets, 'stake'), function(total, num){ if(num == undefined){num = 0;};return total + parseInt(num); }, 0)
     },
   
     addFixture: function(data){
@@ -24,7 +23,12 @@ var BetsStore = _.extend({}, EventEmitter.prototype, {
     },
   
     addToTotal: function(data){
-      _total += parseInt(data); 
+      for(var i in _currentBets){        
+        if (_currentBets[i].name == data.name){
+          _currentBets[i] = _.extend(_currentBets[i], {stake: data.value});
+          break;
+        }
+      }
     },
   
     // Emit Change event

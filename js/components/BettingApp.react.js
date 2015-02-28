@@ -20,6 +20,7 @@ var BettingApp = React.createClass({
   componentDidMount: function(){
     FixturesStore.addChangeListener(this._onChange);
     BetsStore.addChangeListener(this._onChange);
+    console.log(React.Children.count());
   },
   
   componentWillUnmount: function(){
