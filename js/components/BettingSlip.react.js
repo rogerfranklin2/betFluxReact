@@ -27,7 +27,6 @@ var BettingSlip = React.createClass({
   },
   
   toggleSlip: function(){
-    console.log("Toggling")
     this.setState({expanded: !this.state.expanded});
   },
   

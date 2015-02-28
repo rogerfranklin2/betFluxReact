@@ -12,7 +12,11 @@
 }
 
 .betting-slip a, .betting-slip p {
-  color: white;
+  color: black;
+}
+
+.betting-slip input{ 
+  width: 45px;
 }
 
 .hidden{
