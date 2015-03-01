@@ -4,6 +4,7 @@ var _ = require('underscore');
 
 
 var _currentBets = [];
+var _confirmedBets = [];
 
 var BetsStore = _.extend({}, EventEmitter.prototype, {
     getBets: function(){
@@ -14,12 +15,16 @@ var BetsStore = _.extend({}, EventEmitter.prototype, {
       return _.reduce(_.pluck(_currentBets, 'stake'), function(total, num){ if(num == undefined){num = 0;};return total + parseInt(num); }, 0)
     },
   
+    getConfirmedBets: function(){
+      return _confirmedBets;
+    },
+  
     addFixture: function(data){
       _currentBets.push(data);
     },
   
-    removeFixture: function(data){
-      _currentBets = _.without(_currentBets, data);
+    removeFixture: function(fixture){
+      _currentBets = _.without(_currentBets, fixture);
     },
   
     addToTotal: function(data){
@@ -29,6 +34,11 @@ var BetsStore = _.extend({}, EventEmitter.prototype, {
           break;
         }
       }
+    },
+  
+    confirmBets: function(data){
+      _confirmedBets = _currentBets;
+      _currentBets = [];
     },
   
     // Emit Change event
@@ -64,9 +74,13 @@ AppDispatcher.register(function(payload) {
             BetsStore.addToTotal(action.data);
             break;
         
+        case "CONFIRM_BETS":
+            BetsStore.confirmBets(action.data);
+            break;
+        
 
         default:
-            console.log("DEFAULT");
+            console.log("DEFAULT: " + action.actionType);
             return true;
     }
   

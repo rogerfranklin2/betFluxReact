@@ -3,6 +3,7 @@ var FixturesStore = require('../stores/FixturesStore');
 var BetsStore = require('../stores/BetsStore');
 var Fixtures = require('./Fixtures.react');
 var BettingSlip = require('./BettingSlip.react');
+var Confirmation = require('./Confirmation.react');
 
 function getFixturesState(){
   return {
@@ -20,7 +21,6 @@ var BettingApp = React.createClass({
   componentDidMount: function(){
     FixturesStore.addChangeListener(this._onChange);
     BetsStore.addChangeListener(this._onChange);
-    console.log(React.Children.count());
   },
   
   componentWillUnmount: function(){
@@ -33,8 +33,10 @@ var BettingApp = React.createClass({
     
     <div className="betting row">
       <h1>coinBet</h1>
-      <Fixtures fixtures={this.state.games}></Fixtures>
-      <BettingSlip activeBets={this.state.activeBets}></BettingSlip>
+      <Confirmation />
+      <Fixtures fixtures={this.state.games}/>
+      <BettingSlip activeBets={this.state.activeBets}/>     
+
     </div>
     );
   },

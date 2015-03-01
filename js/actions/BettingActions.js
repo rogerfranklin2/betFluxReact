@@ -21,9 +21,14 @@ var BettingActions = {
     });
   },
   addToTotal: function(data){
-    console.log("adding to total");
     AppDispatcher.handleAction({
       actionType: "CALCULATE_TOTAL",
+      data: data
+    });
+  },
+  confirmBets: function(data){
+    AppDispatcher.handleAction({
+      actionType: "CONFIRM_BETS",
       data: data
     });
   }

@@ -7,11 +7,14 @@ var BettingSlip = React.createClass({
   
   getInitialState: function() {
     return {value: BetsStore.getTotal(),
-            expanded: false};
+            expanded: false,
+            confirmed: false};
   },
   
   _onChange: function() {
-    this.setState({value: BetsStore.getTotal(), expanded: true});
+    this.setState({value: BetsStore.getTotal(),
+                   expanded: BetsStore.getBets().length > 0,
+                   confirmed: BetsStore.getConfirmedBets().length > 0});
   },
   
   componentDidMount: function(){
@@ -27,8 +30,7 @@ var BettingSlip = React.createClass({
   },
   
   confirmBets: function(){
-    console.log(React.Children.count());
-//    BettingActions.confirmBets(data);
+    BettingActions.confirmBets(this.props.activeBets);
   },
   
   render: function(){
@@ -45,6 +47,7 @@ var BettingSlip = React.createClass({
         })}
       <button onClick={this.confirmBets}>Confirm bets</button><p>Total: {this.state.value}</p>
       </div>
+                                    
     </div>
     );
   }
