@@ -21,10 +21,14 @@ var Confirmation = React.createClass({
   },
   
   render: function(){
+    console.log(this.state.bets)
     return (
-      <div className={this.state.bets.length > 0 ? '' : 'hidden'}>
+      <div className={this.state.bets.length > 0 ? 'card-panel col s12 green accent-3' : 'hidden'}>
         <h3>Thanks for the bet!</h3>
-          <p>{this.state.bets}</p>
+          <blockquote>
+          <p>{this.state.bets.map(function(game, i){
+                return( <p key={i}>Team: <strong>{game.name}</strong> Odds <strong>{game.odds}</strong>  Stake: <strong>{game.stake}</strong></p> )
+              })}</p></blockquote>
       </div>
     );
   }
